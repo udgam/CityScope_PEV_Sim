@@ -22,7 +22,7 @@ boolean drawRoads = false;
 
 void setup() {
 
-  size(1920, 1920); //screenScale is about 1.5
+  size(1024, 1024); //1920 x 1920: screenScale is about 1.5
   screenScale = width / 1920.0; //fit everything with screen size
   scale(screenScale);
   println("width = "+width);
