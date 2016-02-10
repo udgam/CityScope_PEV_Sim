@@ -18,7 +18,7 @@ class PEV {
   //int roadID; //the road the PEV is currently on
   Road road; //current road object
   float t; //t location of the current road;
-  PVector locationPt; //location coordination on the canvas
+  PVector locationPt; //location coordination on the canvas, LOCATES PEV
   PVector locationTangent;
   float rotation; //rotation in radius on the canvas
   float speedT; //current speed; units: t per frame
@@ -29,7 +29,7 @@ class PEV {
     //roadID = _roadID;
     //road = roads.roads.get(roadID);
     road = _road;
-    t = _t;
+    t = _t; //location within road; will be important for distance between location and PEV
     status = 0;
     locationPt = road.getPt(t);
     speedT = maxSpeedMPS / road.roadLengthMeter / frameRate; //speedT unit: t per frame
