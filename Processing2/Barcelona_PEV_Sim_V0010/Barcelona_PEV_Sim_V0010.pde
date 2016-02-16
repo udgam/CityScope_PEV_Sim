@@ -95,5 +95,9 @@ void draw() {
   fill(0);
   text(targetPEVNum, 263, 712);
   text(int(maxSpeedKPH/10), 263, 736);
+  
+  //Random Pickup Location
+  fill(255,255,0);
+  float roadOfPickUp = random(0,int(roads.roads.size()-1));
+  println(roadOfPickUp);
 }
-
