@@ -10,6 +10,7 @@ PImage img_BG;
 String roadPtFile;
 float screenScale;  //1.0F(for normal res or OS UHD)  2.0F(for WIN UHD)
 int totalPEVNum = 10;
+int totalSpotNum = 2;
 int targetPEVNum;
 int totalRoadNum;
 float scaleMeterPerPixel = 2.15952; //meter per pixel in processing; meter per mm in rhino
@@ -17,6 +18,7 @@ float ScrollbarRatioPEVNum = 0.12;
 float ScrollbarRatioPEVSpeed = 0.5;
 Roads roads;
 PEVs PEVs;
+Spots Spots;
 boolean drawRoads = false;
 
 
@@ -44,6 +46,10 @@ void setup() {
   // add PEVs
   PEVs = new PEVs();
   PEVs.initiate(totalPEVNum);
+  
+  //add Pickup Spots
+  Spots = new Spots();
+  Spots.initiate(totalSpotNum);
 }
 
 void draw() {
@@ -67,6 +73,7 @@ void draw() {
 
   // run PEVs
   PEVs.run();
+  Spots.run();
 
   //  image(pg, 0, 0);
 
@@ -95,9 +102,4 @@ void draw() {
   fill(0);
   text(targetPEVNum, 263, 712);
   text(int(maxSpeedKPH/10), 263, 736);
-  
-  //Random Pickup Location
-  fill(255,255,0);
-  float roadOfPickUp = random(0,int(roads.roads.size()-1));
-  println(roadOfPickUp);
 }

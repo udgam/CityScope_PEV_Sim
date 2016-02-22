@@ -61,17 +61,17 @@ class Road {
     }
   }
 
-  //PVector getNextPt(float _t) {
-  //  float t = _t;
-  //  int l = roadPts.length;
-  //  if ( t < 0.0 || t > 1.0 ) {
-  //    println("\"t\" out of range! \"t\" must be between 0.0 and 1.0. Now t = " + t);
-  //    return null;
-  //  } else {
-  //    int n = int((l-1)*t);
-  //    return roadPts[n+1];
-  //  }
-  //}
+  PVector getNextPt(float _t) {
+    float t = _t;
+    int l = roadPts.length;
+    if ( t < 0.0 || t > 1.0 ) {
+      println("\"t\" out of range! \"t\" must be between 0.0 and 1.0. Now t = " + t);
+      return null;
+    } else {
+      int n = int((l-1)*t);
+      return roadPts[n+1];
+    }
+  }
   
   PVector getTangentVector(float _t) {
     float t = _t;
