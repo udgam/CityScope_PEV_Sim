@@ -20,7 +20,12 @@ Roads roads;
 PEVs PEVs;
 Spots Spots;
 boolean drawRoads = false;
-
+boolean drawPath = false;
+ArrayList <ArrayList<Node>> paths;
+Path path;
+Spots pickups;
+Spots destinations;
+boolean presenceOfPath = false;
 
 void setup() {
 
@@ -50,6 +55,39 @@ void setup() {
   //add Pickup Spots
   Spots = new Spots();
   Spots.initiate(totalSpotNum);
+  pickups = new Spots();
+  destinations = new Spots();
+  path = new Path();
+  
+  for (Spot spot: Spots.Spots){
+     if (spot.status == 0){
+       pickups.addSpot(spot);
+     }
+     
+     if (spot.status == 1){
+       destinations.addSpot(spot);   
+     }
+  }
+  
+  // Creating Paths
+  if (pickups.Spots.size() > 1 && destinations.Spots.size() > 1 ){
+      paths = new ArrayList<ArrayList<Node>>();
+      int numberOfPaths = 0;
+      if (pickups.Spots.size() < destinations.Spots.size()){
+          numberOfPaths = pickups.Spots.size();
+      }
+      else{numberOfPaths = destinations.Spots.size();}
+      
+      for (int i = 0; i<= numberOfPaths; i++){
+          path.findPath(pickups.Spots.get(i), destinations.Spots.get(i));
+          paths.add(path.pathOfNodes);
+          if (!presenceOfPath){presenceOfPath = true;}
+      }
+   
+      
+      
+  }
+  
 }
 
 void draw() {
@@ -70,11 +108,22 @@ void draw() {
   if (drawRoads) {
     roads.drawRoads();
   }
+  
+  if (drawPath && presenceOfPath){
+    for (ArrayList<Node> eachPath: paths){
+    path.drawPath(eachPath);
+    }
+  }
+  
+  
+  
+  
+  
 
   // run PEVs
   PEVs.run();
   Spots.run();
-
+  
   //  image(pg, 0, 0);
 
   // show frameRate

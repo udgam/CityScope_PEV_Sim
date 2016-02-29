@@ -6,7 +6,7 @@
 class Spot {
 
   //int id; //PEV agent id
-  int status; //0 - not picked up; 1 - being delivered; 2 - delivered;
+  int status; //0 = Pick Up, 1 = Location
   //int roadID; //the road the PEV is currently on
   Road road; //current road object
   float t; //t location of the current road;
@@ -20,7 +20,7 @@ class Spot {
     //road = roads.roads.get(roadID);
     road = _road;
     t = _t;
-    status = 0;
+    status = int(random(0,2));
     locationPt = road.getPt(t);
     speedT = 0; //speedT unit: t per frame
   }
@@ -112,7 +112,10 @@ void run() {
   
     pushMatrix();
     translate(locationPt.x, locationPt.y);
+    if (status==0){
     fill(255,255,0);
+    }
+    else{fill(255,0,0);}
     ellipse(0,0, 10,10);
     //// draw direction line
     //stroke(0, 255, 0); 

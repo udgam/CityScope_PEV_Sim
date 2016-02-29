@@ -17,6 +17,12 @@ Node(PVector start1, PVector end1, Road road1){
        roadOfNode = road1;
 }
 
+void drawNode() {
+      stroke(255, 0, 0); //cyan
+      strokeWeight(1.0); 
+      line(start.x, start.y, end.x, end.y);
+  }
+
 
 
 

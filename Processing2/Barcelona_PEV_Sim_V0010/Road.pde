@@ -99,11 +99,6 @@ class Road {
 
   void drawRoad() {
     for (int i = 0; i < ptNum - 1; i ++) {
-      //if (directionType == 0) {
-      //  stroke(0, 255, 255); //one way = cyan
-      //} else {
-      //  stroke(0, 0, 255); //two way = blue
-      //}
       stroke(0, 255, 255); //cyan
       strokeWeight(1.0); 
       line(roadPts[i].x, roadPts[i].y, roadPts[i+1].x, roadPts[i+1].y);

@@ -35,7 +35,7 @@ class Spots {
     }
   }
 
-  void addPEV(Spot _spot) {
+  void addSpot(Spot _spot) {
     Spots.add(_spot);
   }
 
