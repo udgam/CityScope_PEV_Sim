@@ -113,7 +113,7 @@ void run() {
     pushMatrix();
     translate(locationPt.x, locationPt.y);
     if (status==0){
-    fill(255,255,0);
+    fill(255,240,0);
     }
     else{fill(255,0,0);}
     ellipse(0,0, 10,10);
